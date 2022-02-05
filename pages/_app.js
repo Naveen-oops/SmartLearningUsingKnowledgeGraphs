@@ -1,3 +1,6 @@
+import Layouts from '../components/Layouts';
+import '../styles/globals.css'
+
 import {
   ApolloProvider,
   ApolloClient,
@@ -18,9 +21,11 @@ const createApolloClient = () => {
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ApolloProvider client={createApolloClient()}>
-      <Component {...pageProps} />)
-    </ApolloProvider>
+    <Layouts>
+      <ApolloProvider client={createApolloClient()}>
+        <Component {...pageProps} />
+      </ApolloProvider>
+    </Layouts>
   );
 }
 
