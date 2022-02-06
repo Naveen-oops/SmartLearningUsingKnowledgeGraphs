@@ -4,7 +4,7 @@ export default function Home() {
   return ( 
   <div>
     <Head>
-      <title> WebDev Newz</title>
+      <title> Smart learning using Knowledge graphs</title>
       <meta name='keywords' content='web
       development, programming'/>
     </Head>
