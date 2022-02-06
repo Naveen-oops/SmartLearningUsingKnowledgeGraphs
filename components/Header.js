@@ -4,9 +4,9 @@ const Header = () => {
   return (
   <div>
       <h1 className={headerStyles.title}>
-          <span>webDev</span> News
+          <span>Edu</span>Graph
       </h1>
-      <p> Keep up to date with latest news</p>
+      <p>Smart way of learning!</p>
   </div>
   );
 };
