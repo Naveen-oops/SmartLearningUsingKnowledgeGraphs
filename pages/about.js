@@ -93,6 +93,16 @@ section{
 .card-text{
   grid-area: text;
 }
+
+  .card:hover{
+    transform: scale(1.15);
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.6);
+  }
+  .card{
+    transition: 0.5s ease;
+    cursor: pointer;
+    margin: 30px;
+  }
     `}</style>
   </div>
   );
