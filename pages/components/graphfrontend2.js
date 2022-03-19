@@ -9,7 +9,7 @@ const NoSSRForceGraph = dynamic(() => import('../../lib/NoSSRForceGraph'), {
 
 const nosqlDistributions = gql`
 {
-  distributions(where: {name: "Neo4j"}){
+  distributions(where: {name: "MongoDB"}){
     name
     id
     url
@@ -161,7 +161,7 @@ const formatdata = (data)=>{
 
 };
 
-export default function GraphFrontEnd() {
+export default function GraphFrontEnd2() {
   const [graphData, setGraphData] = useState({ nodes: [], links: [] });
 
   const {data} = useQuery(nosqlDistributions,{

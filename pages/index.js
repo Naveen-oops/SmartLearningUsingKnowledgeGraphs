@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import GraphFrontEnd from './components/graphfrontend'
+import GraphFrontEnd2 from './components/graphfrontend2'
 export default function Home() {
   return ( 
   <div>
@@ -9,6 +10,7 @@ export default function Home() {
       development, programming'/>
     </Head>
     <GraphFrontEnd />
+    <GraphFrontEnd2/>
   </div>
   )
 }
