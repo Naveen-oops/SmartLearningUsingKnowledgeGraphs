@@ -6,9 +6,10 @@ const Header = () => {
       <h1 className={headerStyles.title}>
           <span>Edu</span>Graph
       </h1>
-      <p>Smart way of learning!</p>
+      <p className={headerStyles.description}>Smart way of learning!</p>
   </div>
   );
 };
 
 export default Header;
+
