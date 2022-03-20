@@ -6,6 +6,8 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    position: fixed;
+    width: 100%;
   }
   
   .nav ul {
@@ -16,5 +18,9 @@
   }
   
   .nav ul li a {
-    margin: 5px 15px;
+    margin: 5px 25px;
+  }
+  
+  .nav p{
+    margin-right: 60px;
   }
