@@ -1,7 +1,10 @@
 import Link from 'next/link'
+import Tour from '../components/Tour';
+
 const home = () => {
     return (
     <div>
+        <center> <Tour /> </center> 
         <h2><center>SMART LEARNING USING KNOWLEDGE GRAPH</center></h2>
         <p><b><i><font color="#0070f3">Edu</font>Graph</i></b> is a knowledge graph that provides a comprehensive learning method for understanding educational concepts in the Computer Science domain.</p>
         <section>    
@@ -10,7 +13,7 @@ const home = () => {
             <li>Simple, clear and interactive graph for each study topics</li>
             <li>Let’s make a revolution in learning !!</li>
         
-        <h3>About the project:</h3>
+        <h3 className='about-project'>About the project:</h3>
         Our project aims in helping students to learn visually with the help of knowledge graphs(or concept maps). The Graphs for various subjects will be available separately and can be used by students to learn interactively. All graphs are made in such a way to make visual impact to learners such that it is easy to read and interpret. 
         
         <h3>Why <b><font color="#0070f3">Edu</font>Graph</b>?</h3>
@@ -24,7 +27,7 @@ const home = () => {
         </section>
 
         <p><center>Using this application, walkthrough the curated knowldge graphs of some Computer Science concepts</center></p>
-        <center><Link href="/kg" passHref><button>Ready</button></Link></center>
+        <center><Link href="/kg" passHref><button className='view-graph'>Ready</button></Link></center>
         <style jsx>
         {`
             h2{
