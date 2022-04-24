@@ -1,6 +1,6 @@
 import React, { useReducer, useEffect } from "react";
 import JoyRide, { ACTIONS, EVENTS, STATUS } from "react-joyride";
-
+import GraphFrontEnd from "../pages/components/graphfrontend";
 const TOUR_STEPS = [
   {
     target: ".about-project",
@@ -13,6 +13,26 @@ const TOUR_STEPS = [
       "Click to start viewing graph",
   }
 ];
+console.log(GraphFrontEnd.graphFrontEnd)
+const KG_TOUR =[
+
+  {
+    target: ".title",
+    content: "Interact with Neo4j Graph",
+    disableBeacon: true,
+  },
+  {
+    target: ".title1",
+    content:
+      "Interact with MongoDB Graph",
+  },
+  // {
+  //   target: GraphFrontEnd.graphFrontEnd,
+  //   content:
+  //     "Interact with MongoDB Graph",
+  // }
+
+]
 
 const INITIAL_STATE = {
   key: new Date(),
@@ -20,7 +40,7 @@ const INITIAL_STATE = {
   continuous: true,
   loading: false,
   stepIndex: 0,
-  steps: TOUR_STEPS,
+  steps: KG_TOUR,
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
