@@ -1,10 +1,10 @@
 import Link from 'next/link'
-import Tour from '../components/Tour';
+import HomeTour from '../components/HomeTour';
 
 const home = () => {
     return (
     <div>
-        <center> <Tour /> </center> 
+        <center> <HomeTour /> </center> 
         <h2><center>SMART LEARNING USING KNOWLEDGE GRAPH</center></h2>
         <p><b><i><font color="#0070f3">Edu</font>Graph</i></b> is a knowledge graph that provides a comprehensive learning method for understanding educational concepts in the Computer Science domain.</p>
         <section>    

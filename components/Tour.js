@@ -1,72 +1,40 @@
 import React, { useReducer, useEffect } from "react";
 import JoyRide, { ACTIONS, EVENTS, STATUS } from "react-joyride";
-import GraphFrontEnd from "../pages/components/graphfrontend";
-const TOUR_STEPS = [
-  {
-    target: ".about-project",
-    content: "Read this to know about project.",
-    disableBeacon: true,
-  },
-  {
-    target: ".view-graph",
-    content:
-      "Click to start viewing graph",
-  }
-];
-console.log(GraphFrontEnd.graphFrontEnd)
-const KG_TOUR =[
 
-  {
-    target: ".title",
-    content: "Interact with Neo4j Graph",
-    disableBeacon: true,
-  },
-  {
-    target: ".title1",
-    content:
-      "Interact with MongoDB Graph",
-  },
-  // {
-  //   target: GraphFrontEnd.graphFrontEnd,
-  //   content:
-  //     "Interact with MongoDB Graph",
-  // }
+const Tour = ({TOUR_STEPS}) => {
 
-]
-
-const INITIAL_STATE = {
-  key: new Date(),
-  run: false,
-  continuous: true,
-  loading: false,
-  stepIndex: 0,
-  steps: KG_TOUR,
-};
-
-const reducer = (state = INITIAL_STATE, action) => {
-  switch (action.type) {
-    case "START":
-      return { ...state, run: true };
-    case "RESET":
-      return { ...state, stepIndex: 0 };
-    case "STOP":
-      return { ...state, run: false };
-    case "NEXT_OR_PREV":
-      return { ...state, ...action.payload };
-    case "RESTART":
-      return {
-        ...state,
-        stepIndex: 0,
-        run: true,
-        loading: false,
-        key: new Date(),
-      };
-    default:
-      return state;
-  }
-};
-
-const Tour = () => {
+  const INITIAL_STATE = {
+    key: new Date(),
+    run: false,
+    continuous: true,
+    loading: false,
+    stepIndex: 0,
+    steps: TOUR_STEPS,
+  };
+  
+  const reducer = (state = INITIAL_STATE, action) => {
+    switch (action.type) {
+      case "START":
+        return { ...state, run: true };
+      case "RESET":
+        return { ...state, stepIndex: 0 };
+      case "STOP":
+        return { ...state, run: false };
+      case "NEXT_OR_PREV":
+        return { ...state, ...action.payload };
+      case "RESTART":
+        return {
+          ...state,
+          stepIndex: 0,
+          run: true,
+          loading: false,
+          key: new Date(),
+        };
+      default:
+        return state;
+    }
+  };
+  
   const [tourState, dispatch] = useReducer(reducer, INITIAL_STATE);
 
   useEffect(() => {
