@@ -9,7 +9,7 @@ const NoSSRForceGraph = dynamic(() => import('../../lib/NoSSRForceGraph'), {
 
 const nosqlDistributions = gql`
 {
-  distributions(where: {name: "Cassandra"}){
+  distributions(where: {name: "Neo4j"}){
     name
     id
     url

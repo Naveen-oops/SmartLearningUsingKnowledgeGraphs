@@ -76,7 +76,21 @@ const Tour = ({TOUR_STEPS}) => {
         showSkipButton={true}
         styles={{
           tooltipContainer: {
-            textAlign: "left",
+            textAlign: "center",
+            // modal arrow and background color
+            alignContent: "center",
+            arrowColor: "#eee",
+            backgroundColor: "#eee",
+            // page overlay color
+            overlayColor: "rgba(79, 26, 0, 0.4)",
+            //button color
+            primaryColor: "mediumaquamarine",
+            //text color
+            textColor: "#333",
+            //width of modal
+            width: 650,
+            //zindex of modal
+            zIndex: 1000
           },
           
           buttonBack: {
