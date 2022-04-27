@@ -1,11 +1,13 @@
 import dynamic from 'next/dynamic';
-import { useQuery, gql } from '@apollo/client';
+import { useQuery,useLazyQuery, gql } from '@apollo/client';
 import { useState } from 'react';
 import __ from 'lodash';
 
 const NoSSRForceGraph = dynamic(() => import('../../lib/NoSSRForceGraph'), {
   ssr: false
 });
+
+const param = "MongoDB";
 
 const nosqlDistributions = gql`
 {
@@ -43,6 +45,47 @@ const nosqlDistributions = gql`
   }
 }
 `
+
+const expandDBByType = gql`
+query DistributionBydbType($db: String) {
+  distributions(
+    where: { dbtype: { type: $db } }
+    options: { limit: 10, sort: { name: DESC } }
+  ) {
+   name
+  id
+  url
+  imageurl
+  __typename
+  dbtype{
+    id
+    __typename
+    type
+  }
+  support{
+    id
+    __typename
+    name
+  }
+  features{
+    id
+    __typename
+    type
+  }
+  licenses{
+    id
+    __typename
+    name
+  }
+  current_release{
+    id
+    __typename
+    version
+  }
+}
+}
+`
+
 const formatdata = (data)=>{
  // this could be generalized but let's leave that for another time
  //console.log(JSON.stringify(data));
@@ -169,6 +212,19 @@ export default function GraphFrontEnd2({title}) {
   });
   console.log(JSON.stringify(graphData));
 
+  const [loadMoreData, { called, loading, data: newData }] = useLazyQuery(
+    expandDBByType,
+    {
+      onCompleted: (data) => {
+        const newSubgraph = formatdata(data);
+        setGraphData({
+          nodes: _.uniqBy([...graphData.nodes, ...newSubgraph.nodes], "id"),
+          links: [...graphData.links, ...newSubgraph.links],
+        });
+      },
+    }
+  );
+
   return (
     <>
     <center> <div className='title1'> {title} </div> </center>
@@ -176,7 +232,15 @@ export default function GraphFrontEnd2({title}) {
     nodeLabel={"name"}
     nodeAutoColorBy = {"__typename"}
     nodeRelSize={8}
-    graphData={graphData}  
+    graphData={graphData} 
+    onNodeClick={(node, event) => {
+      console.log(node);
+      if (node.__typename === "Distribution") {
+        window.open(node.url, "_blank");
+      }else if (node.__typename === "Database") {
+        loadMoreData({ variables: { id: node.id } });
+      }
+    }} 
     nodeCanvasObject={(node, ctx, globalScale) => {
       if (node.__typename === "Language" || node.__typename==="Licence"
       ||  node.__typename==="Database" ||  node.__typename==="Feature"
@@ -209,22 +273,16 @@ export default function GraphFrontEnd2({title}) {
         ctx.drawImage(img, node.x - size / 2, node.y - size / 2, size*2, size);
       }
     }}
-    nodePointerAreaPaint={(node, color, ctx) => {
-      ctx.fillStyle = color;
-      const bckgDimensions = node.__bckgDimensions;
-      bckgDimensions &&
-        ctx.fillRect(
-          node.x - bckgDimensions[0] / 2,
-          node.y - bckgDimensions[1] / 2,
-          ...bckgDimensions
-        );
-    }}
-    onNodeClick={(node, event) => {
-      console.log(node);
-      if (node.__typename === "Distribution") {
-        window.open(node.url, "_blank");
-      }
-    }}
+    // nodePointerAreaPaint={(node, color, ctx) => {
+    //   ctx.fillStyle = color;
+    //   const bckgDimensions = node.__bckgDimensions;
+    //   bckgDimensions &&
+    //     ctx.fillRect(
+    //       node.x - bckgDimensions[0] / 2,
+    //       node.y - bckgDimensions[1] / 2,
+    //       ...bckgDimensions
+    //     );
+    // }}
     linkLabel="type"
     linkAutoColorBy = {"__typename"}
     linkWidth={1}
