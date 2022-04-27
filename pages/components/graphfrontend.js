@@ -224,7 +224,9 @@ export default function GraphFrontEnd({title}) {
 
   return (
   <>
-  <center> <div className='title'> {title} </div> </center>
+    <div className='title' style={{margin: "20px"}}> 
+      <h3> What is {title} ? </h3> 
+    </div>
   <NoSSRForceGraph 
     nodeLabel={"name"}
     nodeAutoColorBy = {"__typename"}
