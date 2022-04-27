@@ -8,7 +8,7 @@ const about = () => {
     <h2><center>ABOUT US</center></h2>
     <section>
       <div className="card">
-        <div className="card-image1"></div>
+        <div className="card-image card-image1"></div>
         <div className="card-text">
           <h3>Naveen Kumar K</h3>
           <p><a href="https://www.linkedin.com/in/naveenkumar-k-1122841a3/">LinkedIn profile</a></p>
@@ -17,7 +17,7 @@ const about = () => {
         </div>
         
         <div className="card">
-        <div className="card-image2"></div>
+        <div className="card-image card-image2"></div>
         <div className="card-text">
           <h3>Akash Kumar K S</h3>
           <p><a href="https://www.linkedin.com/in/akashkumarks/">LinkedIn profile</a></p>
@@ -26,7 +26,7 @@ const about = () => {
         </div>
 
         <div className="card">
-        <div className="card-image3"></div>
+        <div className="card-image card-image3"></div>
         <div className="card-text">
           <h3>Ritesh S</h3>
           <p><a href="https://www.linkedin.com/in/akashkumarks/">LinkedIn profile</a></p>
@@ -35,7 +35,7 @@ const about = () => {
         </div>
 
         <div className="card">
-        <div className="card-image4"></div>
+        <div className="card-image card-image4"></div>
         <div className="card-text">
           <h3>Radha Krishnan R</h3>
           <p><a href="https://www.linkedin.com/in/radhakrishnanr7/">LinkedIn profile</a></p>
@@ -65,7 +65,7 @@ section{
   text-align: center;
 }
 
-.card-image1, .card-image2, .card-image3, .card-image4{
+.card-image{
   grid-area: image;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
@@ -93,6 +93,16 @@ section{
 .card-text{
   grid-area: text;
 }
+
+  .card:hover{
+    transform: scale(1.15);
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.6);
+  }
+  .card{
+    transition: 0.5s ease;
+    cursor: pointer;
+    margin: 30px;
+  }
     `}</style>
   </div>
   );

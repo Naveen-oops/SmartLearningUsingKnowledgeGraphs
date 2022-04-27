@@ -161,7 +161,7 @@ const formatdata = (data)=>{
 
 };
 
-export default function GraphFrontEnd() {
+export default function GraphFrontEnd({title}) {
   const [graphData, setGraphData] = useState({ nodes: [], links: [] });
 
   const {data} = useQuery(nosqlDistributions,{
@@ -170,6 +170,8 @@ export default function GraphFrontEnd() {
   console.log(JSON.stringify(graphData));
 
   return (
+  <>
+  <center> <div className='title'> {title} </div> </center>
   <NoSSRForceGraph 
     nodeLabel={"name"}
     nodeAutoColorBy = {"__typename"}
@@ -228,6 +230,7 @@ export default function GraphFrontEnd() {
     linkWidth={1}
 
   />
+  </>
   );
 }
 
