@@ -2,7 +2,7 @@ import Head from 'next/head'
 import GraphFrontEnd from './components/graphfrontend'
 import GraphFrontEnd2 from './components/graphfrontend2'
 import GraphTour from '../components/GraphTour'
-
+import FullGraph from './components/FullGraph'
 export default function Home() {
 
   return ( 
@@ -13,6 +13,7 @@ export default function Home() {
     </Head>
     <center> <GraphTour /> </center>
     
+    <FullGraph title="NoSQLGraph"/>
     <GraphFrontEnd title = "Neo4j" />
     <GraphFrontEnd2 title = "MongoDB"/>
   </div>
