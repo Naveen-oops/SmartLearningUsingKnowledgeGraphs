@@ -11,7 +11,9 @@ export default function Home() {
       <title> Smart learning using Knowledge graphs</title>
       <meta name='keywords' content='web development, programming'/>
     </Head>
+    <p>
     <center> <GraphTour /> </center>
+    </p>
     
     <FullGraph title="NoSQLGraph"/>
     <GraphFrontEnd title = "Neo4j" />
